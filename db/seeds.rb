@@ -9,3 +9,4 @@
 Chatroom.create(name: "general")
 User.create(email: "pam@theoffice.com", nickname: "paaaam", password: "123456")
 User.create(email: "kelly@theoffice.com", nickname: "kellyy", password: "123456")
+User.create(email: "michael@theoffice.com", nickname: "michael", password: "123456")

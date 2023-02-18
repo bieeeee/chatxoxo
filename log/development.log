@@ -491,3 +491,260 @@ Processing by ChatroomsController#show as HTML
 Completed 200 OK in 46ms (Views: 37.8ms | ActiveRecord: 2.1ms | Allocations: 20431)
 
 
+Started POST "/chatrooms/1/messages" for ::1 at 2023-02-18 13:52:49 -0500
+Processing by MessagesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "message"=>{"content"=>"dddd"}, "commit"=>"Send", "chatroom_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mChatroom Load (0.3ms)[0m  [1m[34mSELECT "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:3:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/messages_controller.rb:7:in `create'
+  [1m[36mMessage Create (0.6ms)[0m  [1m[32mINSERT INTO "messages" ("content", "chatroom_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "dddd"], ["chatroom_id", 1], ["user_id", 1], ["created_at", "2023-02-18 18:52:50.020540"], ["updated_at", "2023-02-18 18:52:50.020540"]]
+  ↳ app/controllers/messages_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/messages_controller.rb:7:in `create'
+Redirected to http://localhost:3000/chatrooms/1
+Completed 302 Found in 63ms (ActiveRecord: 17.4ms | Allocations: 14059)
+
+
+Started GET "/chatrooms/1" for ::1 at 2023-02-18 13:52:50 -0500
+Processing by ChatroomsController#show as TURBO_STREAM
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mChatroom Load (6.4ms)[0m  [1m[34mSELECT "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:3:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering chatrooms/show.html.erb within layouts/application
+  [1m[36mMessage Load (4.5ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."chatroom_id" = $1[0m  [["chatroom_id", 1]]
+  ↳ app/views/chatrooms/show.html.erb:5
+  [1m[36mUser Load (3.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/chatrooms/show.html.erb:8
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/chatrooms/show.html.erb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/chatrooms/show.html.erb:8
+  Rendered chatrooms/show.html.erb within layouts/application (Duration: 59.3ms | Allocations: 12253)
+  [1m[36mChatroom Load (0.4ms)[0m  [1m[34mSELECT "chatrooms".* FROM "chatrooms" ORDER BY "chatrooms"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:18
+  Rendered shared/_navbar.html.erb (Duration: 3.7ms | Allocations: 992)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 35)
+  Rendered layout layouts/application.html.erb (Duration: 540.5ms | Allocations: 24610)
+Completed 200 OK in 563ms (Views: 533.7ms | ActiveRecord: 15.1ms | Allocations: 27400)
+
+
+Started GET "/chatrooms/1" for ::1 at 2023-02-18 13:52:50 -0500
+Processing by ChatroomsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (3.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mChatroom Load (0.4ms)[0m  [1m[34mSELECT "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:3:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering chatrooms/show.html.erb within layouts/application
+  [1m[36mMessage Load (0.7ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."chatroom_id" = $1[0m  [["chatroom_id", 1]]
+  ↳ app/views/chatrooms/show.html.erb:5
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/chatrooms/show.html.erb:8
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/chatrooms/show.html.erb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/chatrooms/show.html.erb:8
+  Rendered chatrooms/show.html.erb within layouts/application (Duration: 41.9ms | Allocations: 9560)
+  [1m[36mChatroom Load (0.3ms)[0m  [1m[34mSELECT "chatrooms".* FROM "chatrooms" ORDER BY "chatrooms"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:18
+  Rendered shared/_navbar.html.erb (Duration: 2.6ms | Allocations: 853)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 24)
+  Rendered layout layouts/application.html.erb (Duration: 92.6ms | Allocations: 18785)
+Completed 200 OK in 110ms (Views: 91.7ms | ActiveRecord: 5.6ms | Allocations: 21079)
+
+
+Started GET "/chatrooms/1" for ::1 at 2023-02-18 13:52:58 -0500
+Processing by ChatroomsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (4.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mChatroom Load (8.9ms)[0m  [1m[34mSELECT "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:3:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering chatrooms/show.html.erb within layouts/application
+  [1m[36mMessage Load (1.4ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."chatroom_id" = $1[0m  [["chatroom_id", 1]]
+  ↳ app/views/chatrooms/show.html.erb:5
+  [1m[36mUser Load (18.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/chatrooms/show.html.erb:8
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/chatrooms/show.html.erb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/chatrooms/show.html.erb:8
+  Rendered chatrooms/show.html.erb within layouts/application (Duration: 42.2ms | Allocations: 9574)
+  [1m[36mChatroom Load (11.8ms)[0m  [1m[34mSELECT "chatrooms".* FROM "chatrooms" ORDER BY "chatrooms"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:18
+  Rendered shared/_navbar.html.erb (Duration: 14.3ms | Allocations: 853)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 24)
+  Rendered layout layouts/application.html.erb (Duration: 80.3ms | Allocations: 18835)
+Completed 200 OK in 155ms (Views: 49.0ms | ActiveRecord: 45.2ms | Allocations: 20914)
+
+
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mChatroom Create (0.6ms)[0m  [1m[32mINSERT INTO "chatrooms" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "general"], ["created_at", "2023-02-18 18:55:36.580251"], ["updated_at", "2023-02-18 18:55:36.580251"]]
+  [1m[36mTRANSACTION (7.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "pam@theoffice.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "kelly@theoffice.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "michael@theoffice.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "nickname") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["email", "michael@theoffice.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2023-02-18 18:55:37.510246"], ["updated_at", "2023-02-18 18:55:37.510246"], ["nickname", "michael"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+Started DELETE "/users/sign_out" for ::1 at 2023-02-18 13:55:48 -0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Devise::SessionsController#destroy as TURBO_STREAM
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "remember_created_at" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["remember_created_at", nil], ["updated_at", "2023-02-18 18:55:48.624887"], ["id", 2]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 303 See Other in 119ms (ActiveRecord: 6.9ms | Allocations: 17011)
+
+
+Started GET "/" for ::1 at 2023-02-18 13:55:48 -0500
+Processing by PagesController#home as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 1.4ms | Allocations: 279)
+  Rendered shared/_navbar.html.erb (Duration: 7.1ms | Allocations: 723)
+  Rendered shared/_flashes.html.erb (Duration: 1.2ms | Allocations: 203)
+  Rendered layout layouts/application.html.erb (Duration: 353.3ms | Allocations: 54345)
+Completed 200 OK in 373ms (Views: 369.2ms | ActiveRecord: 0.0ms | Allocations: 56386)
+
+
+Started GET "/users/sign_in" for ::1 at 2023-02-18 13:55:50 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.8ms | Allocations: 674)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 76.1ms | Allocations: 28264)
+  Rendered shared/_navbar.html.erb (Duration: 0.6ms | Allocations: 194)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 35)
+  Rendered layout layouts/application.html.erb (Duration: 96.4ms | Allocations: 36994)
+Completed 200 OK in 102ms (Views: 98.8ms | ActiveRecord: 0.0ms | Allocations: 38355)
+
+
+Started POST "/users/sign_in" for ::1 at 2023-02-18 13:55:59 -0500
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"michael@theoffice.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "michael@theoffice.com"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 303 See Other in 319ms (ActiveRecord: 0.3ms | Allocations: 3981)
+
+
+Started GET "/" for ::1 at 2023-02-18 13:55:59 -0500
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.1ms | Allocations: 9)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:13
+  [1m[36mChatroom Load (0.4ms)[0m  [1m[34mSELECT "chatrooms".* FROM "chatrooms" ORDER BY "chatrooms"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:18
+  Rendered shared/_navbar.html.erb (Duration: 13.9ms | Allocations: 4932)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 39)
+  Rendered layout layouts/application.html.erb (Duration: 31.8ms | Allocations: 13691)
+Completed 200 OK in 33ms (Views: 29.2ms | ActiveRecord: 3.3ms | Allocations: 13994)
+
+
+Started GET "/chatrooms/1" for ::1 at 2023-02-18 13:56:01 -0500
+Processing by ChatroomsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mChatroom Load (0.3ms)[0m  [1m[34mSELECT "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:3:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering chatrooms/show.html.erb within layouts/application
+  [1m[36mMessage Load (0.8ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."chatroom_id" = $1[0m  [["chatroom_id", 1]]
+  ↳ app/views/chatrooms/show.html.erb:5
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/chatrooms/show.html.erb:8
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/chatrooms/show.html.erb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/chatrooms/show.html.erb:8
+  Rendered chatrooms/show.html.erb within layouts/application (Duration: 42.6ms | Allocations: 15262)
+  [1m[36mChatroom Load (0.4ms)[0m  [1m[34mSELECT "chatrooms".* FROM "chatrooms" ORDER BY "chatrooms"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:18
+  Rendered shared/_navbar.html.erb (Duration: 3.4ms | Allocations: 908)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 35)
+  Rendered layout layouts/application.html.erb (Duration: 68.2ms | Allocations: 24719)
+Completed 200 OK in 102ms (Views: 68.6ms | ActiveRecord: 7.9ms | Allocations: 31990)
+
+
+Started POST "/chatrooms/1/messages" for ::1 at 2023-02-18 13:56:12 -0500
+Processing by MessagesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "message"=>{"content"=>"sss"}, "commit"=>"Send", "chatroom_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mChatroom Load (0.2ms)[0m  [1m[34mSELECT "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:3:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/messages_controller.rb:7:in `create'
+  [1m[36mMessage Create (1.2ms)[0m  [1m[32mINSERT INTO "messages" ("content", "chatroom_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "sss"], ["chatroom_id", 1], ["user_id", 3], ["created_at", "2023-02-18 18:56:12.717016"], ["updated_at", "2023-02-18 18:56:12.717016"]]
+  ↳ app/controllers/messages_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/messages_controller.rb:7:in `create'
+Redirected to http://localhost:3000/chatrooms/1
+Completed 302 Found in 13ms (ActiveRecord: 2.5ms | Allocations: 4570)
+
+
+Started GET "/chatrooms/1" for ::1 at 2023-02-18 13:56:12 -0500
+Processing by ChatroomsController#show as TURBO_STREAM
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mChatroom Load (0.4ms)[0m  [1m[34mSELECT "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:3:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering chatrooms/show.html.erb within layouts/application
+  [1m[36mMessage Load (0.4ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."chatroom_id" = $1[0m  [["chatroom_id", 1]]
+  ↳ app/views/chatrooms/show.html.erb:5
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/chatrooms/show.html.erb:8
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/chatrooms/show.html.erb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/chatrooms/show.html.erb:8
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/chatrooms/show.html.erb:8
+  Rendered chatrooms/show.html.erb within layouts/application (Duration: 20.2ms | Allocations: 10447)
+  [1m[36mChatroom Load (0.3ms)[0m  [1m[34mSELECT "chatrooms".* FROM "chatrooms" ORDER BY "chatrooms"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:18
+  Rendered shared/_navbar.html.erb (Duration: 3.3ms | Allocations: 860)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 29)
+  Rendered layout layouts/application.html.erb (Duration: 38.3ms | Allocations: 19958)
+Completed 200 OK in 46ms (Views: 36.9ms | ActiveRecord: 2.9ms | Allocations: 22056)
+
+
+Started GET "/chatrooms/1" for ::1 at 2023-02-18 13:56:18 -0500
+Processing by ChatroomsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mChatroom Load (0.3ms)[0m  [1m[34mSELECT "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:3:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering chatrooms/show.html.erb within layouts/application
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."chatroom_id" = $1[0m  [["chatroom_id", 1]]
+  ↳ app/views/chatrooms/show.html.erb:5
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/chatrooms/show.html.erb:8
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/chatrooms/show.html.erb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/chatrooms/show.html.erb:8
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/chatrooms/show.html.erb:8
+  Rendered chatrooms/show.html.erb within layouts/application (Duration: 17.2ms | Allocations: 10278)
+  [1m[36mChatroom Load (0.3ms)[0m  [1m[34mSELECT "chatrooms".* FROM "chatrooms" ORDER BY "chatrooms"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:18
+  Rendered shared/_navbar.html.erb (Duration: 2.0ms | Allocations: 853)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 24)
+  Rendered layout layouts/application.html.erb (Duration: 36.8ms | Allocations: 19486)
+Completed 200 OK in 45ms (Views: 36.2ms | ActiveRecord: 1.9ms | Allocations: 21709)
+
+
